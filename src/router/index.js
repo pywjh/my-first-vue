@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import My from '@/components/My'
 import Order from '@/components/Order'
 import Find from '@/components/Find'
+import Detail from '@/components/Detail'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/detail:id',
+      name: 'Detail',
+      component: Detail
     }
   ]
 })

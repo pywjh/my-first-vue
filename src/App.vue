@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 动态路由视图展示 -->
-    <router-view /> 
+    <router-view/> 
     <!-- 底部导航栏 -->
     <NavBottom/>
   </div>

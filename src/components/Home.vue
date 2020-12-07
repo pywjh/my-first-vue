@@ -21,10 +21,25 @@
         </ul>
       </div>
     </div>
+    <!-- list -->
+    <div class="index-main">
+      <ul>
+        <li class="lists" v-for="(item, i) in items" :key="i">
+          <router-link :to="'/detail/'+item.id">
+            <img :src="item.img" width='150' heigth='150'>
+          </router-link>
+          <label>
+            <b class="discount">折扣价：{{item.product_uprice}}</b>
+            <span class="price-text">原价：{{item.product_price}}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'home',
   data () {
@@ -39,8 +54,21 @@ export default {
         {title: '领取优惠', icon: 'iconcruise-ship', color: '#fa69b9'},
         {title: '在线咨询', icon: 'iconcruise-ship', color: '#fa69b9'},
         {title: '在线咨询', icon: 'iconcruise-ship', color: '#fa69b9'},
-      ]
+      ],
+      items: []
     }
+  },
+  methods: {
+    getLists: function(){
+      axios.get('http://127.0.0.1:8000/list').then(res=>{
+        this.items = res.data
+      }).catch(error=>{
+        console.log(error)
+      })
+    }
+  },
+  created: function(){
+    this.getLists()
   }
 }
 </script>
