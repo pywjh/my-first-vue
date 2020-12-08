@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- titlt -->
-    <h1>{{msg}}</h1>
     <!-- head -->
     <div class="index-category">
       <div class="category" v-for="(list, i) in lists" :key="i">
@@ -44,7 +42,6 @@ export default {
   name: 'home',
   data () {
     return {
-      msg: '首页',
       lists: [
         {title: '在线咨询', icon: 'iconfenlei', color: '#fa69b9'},
         {title: '产品介绍', icon: 'iconcruise-ship', color: '#ecbe35'},

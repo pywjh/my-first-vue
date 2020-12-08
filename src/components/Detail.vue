@@ -4,11 +4,11 @@
       <a class="goback" @click="goBack()">返回</a>
     </div>
     <div>
-      <img src="https://gma.alicdn.com/bao/uploaded/i4/46562752/O1CN01boSkKv1WCSbZP6a29_!!0-saturn_solar.jpg" alt="">
+      <img :src="img">
     </div>
     <div>
       <p>介绍</p>
-      <p>具体信息</p>
+      <p>{{desc}}</p>
     </div>
   </div>
 </template>
@@ -19,6 +19,8 @@ export default {
   name: 'Detail',
   data () {
     return {
+      img: '',
+      desc: ''
     }
   },
   methods: {
@@ -27,14 +29,16 @@ export default {
     },
     getDetail: function(id){
       axios.get('http://127.0.0.1:8000/detail/'+id).then(res=>{
-        console.log(res)
+        const data = res.data
+        this.img = data.img
+        this.desc = data.desc
       }).catch(error=>{
         console.log(error)
       })
     }
   },
-  mounted: function(){
-    this.getDetail(this.$router.params.id)
+  created: function(){
+    this.getDetail(this.$route.params.id)
   }
 }
 </script>

@@ -37,7 +37,7 @@ export default new Router({
       component: Order
     },
     {
-      path: '/detail:id',
+      path: '/detail/:id',
       name: 'Detail',
       component: Detail
     }

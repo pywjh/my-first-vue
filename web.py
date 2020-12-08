@@ -96,7 +96,7 @@ def index():
 
     return res
 
-@app.route('/detail/id=<int:id>')
+@app.route('/detail/<int:id>')
 def detail(id):
     res = list(filter(lambda d: d['id']==id, product_list))
     data = res and res[0] and {
